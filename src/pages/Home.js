@@ -37,6 +37,7 @@ export default class Home extends Component {
   render() {
     const {posts} = this.state
     console.log(this.state)
+    console.log('firebase')
     return (
       <>
       <Navbar/>
