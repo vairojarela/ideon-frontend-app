@@ -3,7 +3,7 @@ import axios from 'axios';
 class PostsService {
   constructor() {
     this.auth = axios.create({
-      baseURL: process.env.BACKEND_DOMAIN,
+      baseURL: 'http://localhost:4000',
       withCredentials: true,
     })
   }
@@ -22,8 +22,8 @@ class PostsService {
 
   createPosts(user) {
     console.log(user)
-    const { authorId, title, description } = user;
-    return this.auth.post('/posts/create', {authorId, title, description})
+    const { authorId, authorName, title, description, dreamType} = user;
+    return this.auth.post('/posts/create', {authorId, authorName, title, description, dreamType})
       .then(({ data }) => data);
   }
 

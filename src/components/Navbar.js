@@ -17,34 +17,29 @@ class Navbar extends Component {
         <>
           <nav className="nav-mobile">
              <img data-target="slide-out" className="sidenav-trigger circle small-img" src={this.props.user.image} alt={this.props.user.username}></img>
-            <div class="nav-wrapper">
-      <form>
-        <div class="input-field">
-          <input id="search" type="search" required />
-          <label class="label-icon" for="search"><i class="material-icons">search</i></label>
-          <i class="material-icons">close</i>
-        </div>
-      </form>
+            <div className="nav-wrapper">
     </div>
           </nav>
-          <ul id="slide-out" class="sidenav">
+          <ul id="slide-out" className="sidenav">
             <li>
-              <div class="user-view">
-                <div class="background">
+              <div className="user-view">
+                <div className="background">
                 </div>
-            <a href="#user"><img class="circle" src={this.props.user.image}/></a>
-            <a href="#name"><span class="white-text name">{this.props.user.name}</span></a>
-            <a href="#email"><span class="white-text email">{this.props.user.username}</span></a>
+            <a href="#user"><img className="circle" src={this.props.user.image}/></a>
+            <a href="#name"><span className="white-text name">{this.props.user.name}</span></a>
+            <a href="#email"><span className="white-text email">{this.props.user.username}</span></a>
     </div></li>
     <li className="sidenav-close">
     <Link to='/profile'><i className="material-icons">person</i>Profile</Link></li>
-    <li><a href="#!">Second Link</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Subheader</a></li>
-    <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-    <button onClick={this.props.logout} className="sidenav-close btn waves-effect waves-light" type="submit" name="action">Logout
+    {/* <li><a href="#!">Second Link</a></li>
+    <li><div className="divider"></div></li>
+    <li><a className="subheader">Subheader</a></li>
+    <li><a className="waves-effect" href="#!">Third Link With Waves</a></li> */}
+    <center>
+      <button onClick={this.props.logout} className="deep-purple accent-3 sidenav-close btn waves-effect waves-light" type="submit" name="action">Logout
     <i className="material-icons right">exit_to_app</i>
 </button>
+</center>
   </ul>
           </>
         ) : (

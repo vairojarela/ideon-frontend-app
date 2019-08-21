@@ -7,7 +7,7 @@ import postsService from '../services/posts-service';
 import withAuth from '../components/withAuth';
 
 
-class Home extends Component {
+export default class Home extends Component {
 
   state = {
     posts: [],
@@ -15,14 +15,16 @@ class Home extends Component {
   
   
   componentDidMount(){
-   /*  postsService.getAllPosts()
+    postsService.getAllPosts()
     .then(response => {
       console.log(response)
       this.setState({
         posts: response.listOfPosts 
       })
-    }) */
+    })
   }
+
+ 
 
   
   handleDeleteClick = (id) => {
@@ -37,6 +39,24 @@ class Home extends Component {
     })
   }
 
+  handleSearch= (e) => {
+    let {posts} = this.state
+    let newDreamsList = [];
+    if (e.target.value !== "") {
+      newDreamsList = posts.filter(post => {
+      const lc = post.title.toLowerCase();
+      const filter = e.target.value.toLowerCase();
+      return lc.includes(filter);
+    });
+  } else {
+    newDreamsList = posts
+    }
+
+    this.setState({
+      posts: newDreamsList
+    });
+  }
+
   render() {
     const {posts} = this.state
     console.log(this.state)
@@ -44,7 +64,14 @@ class Home extends Component {
     return (
       <>
       <Navbar/>
-      <section className="home container">  
+      <section className="home container">
+      <form>
+        <div className="input-field">
+          <input onChange={this.handleSearch} id="search" type="search" required />
+          <label className="label-icon" htmlFor="search"><i className="material-icons">search</i></label>
+          <i className="material-icons">close</i>
+        </div>
+      </form>
       {posts.length > 0 ? posts.map((post) => {
         return(
         <div className="card" key={post._id}>
@@ -52,12 +79,9 @@ class Home extends Component {
           </div>
           <div className="card-content">
           
-            <span className="card-title activator grey-text text-darken-4"><span className="votes">{post.votes}</span>{post.title}<i className="material-icons right">more_vert</i></span>
-            <div class="chip">
-              <i src="images/yuna.jpg" alt="Contact Person"/>
-              Jane Doe
-            </div>
-            <p><a href="#">Comment</a></p>
+            <span className="card-title activator grey-text text-darken-4"><span className="badges">{post.votes}</span>{post.title}<i className="material-icons right">more_vert</i></span>
+            <span data-badge-caption={post.dreamType} class="new badge"></span> 
+            <p>Posted by <a href="#">{post.authorName}</a> {moment(post.created_at).fromNow()}</p>
           </div>
           <div className="card-reveal">
             <span className="card-title grey-text text-darken-4">{post.title}<i className="material-icons right">close</i></span>
@@ -75,5 +99,3 @@ class Home extends Component {
     )
   }
 }
-
-export default withAuth(Home)

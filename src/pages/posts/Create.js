@@ -8,11 +8,13 @@ import {Redirect} from 'react-router-dom';
 
 class CreatePosts extends Component {
 
+  
   state = {
     authorId: this.props.user._id,
+    authorName: this.props.user.username,
     title: '',
     description: '',
-    dreamType: ['Daydream', 'Lucid', 'Nightmare', 'Recurring', 'Healing', 'Prophetic', 'Signal', 'Epic', 'Other'],
+    dreamType: '',
     redirect: false
   }
 
@@ -23,11 +25,32 @@ class CreatePosts extends Component {
     })
   }
 
+  handleOnCheck = (event) => {
+    if (event.target.checked){
+      this.setState({
+        dreamType: event.target.value
+      })
+    } else {
+      this.setState({
+        dreamType: '',
+      })
+    }
+  }
+
+  handleOnChange = (event) => {
+    const {name, value} = event.target;
+    console.log(event.target.checked)
+    this.setState({
+      [name]: value,
+    })
+  }
+
   handleOnSubmit = (event) => {
-    const {authorId, title, description, dreamType} = this.state
+    const {authorId, authorName, title, description, dreamType} = this.state
     event.preventDefault();
     postsService.createPosts({
       authorId,
+      authorName,
       title,
       description,
       dreamType
@@ -36,7 +59,6 @@ class CreatePosts extends Component {
         console.log(error)
     })
   }
-
 
   redirect = (path) => {
     this.setState({
@@ -49,7 +71,7 @@ class CreatePosts extends Component {
     this.props.history.goBack();
 }
   render() {
-    const {title, description, dreamType, redirect} = this.state
+    const {title, description, redirect} = this.state
     return (
       <>
       <div className="container">
@@ -72,79 +94,86 @@ class CreatePosts extends Component {
       <div className="row">
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="material-icons">add</i>
+              <i className="create-icons material-icons">add</i>
               <label>
-              <input onChange={this.handleOnChange} type="checkbox" className="filled-in" value={dreamType[0]}/>
-              <span>{dreamType[0]}</span>
+              <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value="Daydream"/>
+              <span>Daydream</span>
             </label>
-            </div>
-        <div className="type-item">
-              <i className="material-icons">add</i>
-              <label>
-              <input onChange={this.handleOnChange} type="checkbox" className="filled-in" value={dreamType[1]}/>
-              <span>{dreamType[1]}</span>
-            </label>
-            </div>
-        <div className="type-item">
-              <i className="material-icons">mood_bad</i>
-              <label>
-              <input onChange={this.handleOnChange} type="checkbox" className="filled-in" value={dreamType[2]}/>
-              <span>{dreamType[2]}</span>
-            </label>
-            </div>
             </div>
         </div>
-            <div className="row">
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="material-icons">add</i>
+              <i className="create-icons material-icons">add</i>
               <label>
-              <input onChange={this.handleOnChange} type="checkbox" className="filled-in" value={dreamType[3]}/>
-              <span>{dreamType[3]}</span>
+              <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Lucid'/>
+              <span>Lucid</span>
             </label>
             </div>
-        <div className="type-item">
-              <i className="material-icons">add</i>
-              <label>
-              <input onChange={this.handleOnChange} type="checkbox" className="filled-in" value={dreamType[4]}/>
-              <span>{dreamType[4]}</span>
-            </label>
             </div>
-        <div className="type-item">
-              <i className="material-icons">add</i>
-              <label>
-              <input onChange={this.handleOnChange} type="checkbox" className="filled-in" value={dreamType[5]}/>
-              <span>{dreamType[5]}</span>
-            </label>
-            </div>
-        </div>
-        </div>
-        <div className="row">
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="material-icons">add</i>
+              <i className="create-icons material-icons">mood_bad</i>
               <label>
-              <input onChange={this.handleOnChange} type="checkbox" className="filled-in" value={dreamType[6]}/>
-              <span>{dreamType[6]}</span>
+              <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Nightmare'/>
+              <span>Nightmare</span>
             </label>
             </div>
+            </div>
+        <div className="input-field col s12 types">  
         <div className="type-item">
-              <i className="material-icons">add</i>
+              <i className="create-icons material-icons">add</i>
               <label>
-              <input onChange={this.handleOnChange} type="checkbox" className="filled-in" value={dreamType[7]}/>
-              <span>{dreamType[7]}</span>
+              <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Recurring'/>
+              <span>Recurring</span>
             </label>
             </div>
+            </div>
+        <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="material-icons">add</i>
+              <i className="create-icons material-icons">add</i>
               <label>
-              <input onChange={this.handleOnChange} type="checkbox" className="filled-in" value={dreamType[8]}/>
-              <span>{dreamType[8]}</span>
+              <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Healing'/>
+              <span>Healing</span>
             </label>
             </div>
-        </div>
-        </div>
-        
+            </div>
+        <div className="input-field col s12 types">
+        <div className="type-item">
+              <i className="create-icons material-icons">add</i>
+              <label>
+              <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Prophetic'/>
+              <span>Prophetic</span>
+            </label>
+            </div>
+            </div>
+        <div className="input-field col s12 types">
+        <div className="type-item">
+              <i className="create-icons material-icons">add</i>
+              <label>
+              <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Signal'/>
+              <span>Signal</span>
+            </label>
+            </div>
+            </div>
+        <div className="input-field col s12 types">
+        <div className="type-item">
+              <i className="create-icons material-icons">add</i>
+              <label>
+              <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Epic'/>
+              <span>Epic</span>
+            </label>
+            </div>
+            </div>
+        <div className="input-field col s12 types">
+        <div className="type-item">
+              <i className="create-icons material-icons">add</i>
+              <label>
+              <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Other'/>
+              <span>Other</span>
+            </label>
+            </div>
+            </div>
+        </div>        
   <button className="btn waves-effect waves-light" type="submit" name="action">Submit
     <i className="material-icons right">send</i>
 </button>

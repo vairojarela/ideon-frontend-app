@@ -39,9 +39,19 @@ class Signup extends Component {
   render() {
     const { username, password, loginError } = this.state;
     return (
-      <section className="login-container">
+      <div className="login-container">
+      <div className="moon">
+<div className="moon-shadow"></div>
+</div>
+
+<div className="star"></div>
+<div className="star"></div>
+<div className="star"></div>
+<div className="star"></div>
+<div className="star"></div>
       <div className="login-form valign-wrapper">
-        <form onSubmit={this.handleFormSubmit}>
+<h2 className="white-text" >dreamhub</h2>
+        <form className="col s12" onSubmit={this.handleFormSubmit}>
         <div className="input-field col s6">
           <input value={username} name='username' id="username" type="text" className="validate" onChange={this.handleChange}/>
           <label htmlFor="username">Username</label>
@@ -50,14 +60,17 @@ class Signup extends Component {
           <input value={password} name='password' id="password" type="text" className="validate" onChange={this.handleChange}/>
           <label htmlFor="password">Password</label>
         </div>
-          <input className='btn waves-effect waves-light"' type='submit' value='Signup' />
+        <center>
+          <input className='deep-purple accent-3 btn waves-effect waves-light" ' type='submit' value='Signup' />
+          </center>
         </form>
         {loginError ? <p className="login-p ">Error signin up, try again later.</p> : null}
-        <p className="login-p" >Already have account?</p>
-          <Link to={'/login'}> Login</Link>
+        <p className="login-p" >Already have account?</p> 
+          <Link to={'/login'}>Login</Link>
 
       </div>
-      </section>
+      </div>
+
     )
   }
 }

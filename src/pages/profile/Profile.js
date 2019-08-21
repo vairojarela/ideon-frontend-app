@@ -4,7 +4,6 @@ import withAuth from '../../components/withAuth';
 import Navbar from '../../components/Navbar';
 import AuthService from '../../services/auth-service'
 import M from "materialize-css";
-
 import moment from 'moment'
 import Footer from '../../components/Footer';
 import postsService from '../../services/posts-service';
@@ -29,7 +28,10 @@ class Profile extends Component {
         console.log(error);
       })
     
-      postsService.getAllPostsFromUser(this.props._id)
+		}
+		
+		componentDidMount(){
+      postsService.getAllPostsFromUser(this.props.user._id)
       .then((response)=> {
         const postsFromUserFromAPI = response
         console.log(postsFromUserFromAPI)
@@ -39,8 +41,9 @@ class Profile extends Component {
       })
       .catch((error) => {
         console.log(error);
-      })
-  }
+			})
+		}
+
   render() {
     return (
       <>

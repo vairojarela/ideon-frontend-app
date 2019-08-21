@@ -76,11 +76,15 @@ nav{
   font-size: 1rem;
 }
 
+.create-icons{
+  text-align: center;
+}
+
 
 .nav-bottom{
   display: flex;
   justify-content: space-between;
-  position: fixed;
+/*   position: fixed; */
   bottom: 0;
   height: 70px;
 }
