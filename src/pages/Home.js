@@ -4,21 +4,24 @@ import Footer from '../components/Footer';
 import Loader from '../components/Loader';
 import moment from 'moment'
 import postsService from '../services/posts-service';
+import withAuth from '../components/withAuth';
 
-export default class Home extends Component {
+
+class Home extends Component {
+
   state = {
     posts: [],
   }
   
   
   componentDidMount(){
-    postsService.getAllPosts()
+   /*  postsService.getAllPosts()
     .then(response => {
       console.log(response)
       this.setState({
         posts: response.listOfPosts 
       })
-    })
+    }) */
   }
 
   
@@ -37,14 +40,12 @@ export default class Home extends Component {
   render() {
     const {posts} = this.state
     console.log(this.state)
-    console.log('firebase')
-    console.log('firebase')
 
     return (
       <>
       <Navbar/>
       <section className="home container">  
-      {posts.length ? posts.map((post) => {
+      {posts.length > 0 ? posts.map((post) => {
         return(
         <div className="card" key={post._id}>
           <div className="card-image waves-effect waves-block waves-light">
@@ -74,3 +75,5 @@ export default class Home extends Component {
     )
   }
 }
+
+export default withAuth(Home)
