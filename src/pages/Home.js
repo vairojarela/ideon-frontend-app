@@ -38,6 +38,8 @@ export default class Home extends Component {
     const {posts} = this.state
     console.log(this.state)
     console.log('firebase')
+    console.log('firebase')
+
     return (
       <>
       <Navbar/>
