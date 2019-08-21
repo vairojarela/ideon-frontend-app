@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import authService from '../services/auth-service.js';
+import Loader from '../components/Loader';
 
 export const AuthContext = React.createContext();
 
@@ -62,7 +63,7 @@ class AuthProvider extends Component {
     const {user, isLoggedIn, isLoading} = this.state;
     return (
       <>
-        {isLoading ? <p>Loading...</p> : (
+        {isLoading ? <Loader/> : (
             <AuthContext.Provider value={ 
               {
                 user,

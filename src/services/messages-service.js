@@ -1,20 +1,20 @@
 import axios from 'axios';
 
-class AuthService {
+class MessagesService {
   constructor() {
     this.auth = axios.create({
-      baseURL: 'http://localhost:4000',
+      url: "https://us1.pusherplatform.io/services/chatkit_token_provider/v1/c30b8cc8-125e-4f4b-a8e1-ebb4307f1258/token",
       withCredentials: true,
     })
   }
 
   signup(user) {
-    const { username, password } = user;
-    return this.auth.post('/auth/signup', {username, password})
-      .then(({ data }) => data);
+    const { _id, username } = user;
+    return this.auth.post('/token', {_id})
+      .then(({ response }) => console.log(response));
   }
 
-  login(user) {
+/*   login(user) {
     const { username, password } = user;
     return this.auth.post('/auth/login', {username, password})
       .then(({ data }) => data);
@@ -28,10 +28,10 @@ class AuthService {
   me() {
     return this.auth.get('/auth/me')
     .then(response => response.data)
-  }
+  } */
   
 }
 
-const authService = new AuthService();
+const messagesService = new MessagesService();
 
-export default authService;
+export default messagesService;

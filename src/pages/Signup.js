@@ -7,6 +7,7 @@ class Signup extends Component {
   state = {
     username: '',
     password: '',
+    loginError: false
   };
 
   handleFormSubmit = (event) => {
@@ -22,7 +23,12 @@ class Signup extends Component {
             password: '',
         });
       })
-      .catch( error => console.log(error) )
+      .catch( error => {
+        console.log(error)
+        this.setState({
+          loginError: true
+        })
+      } )
   }
 
   handleChange = (event) => {  
@@ -31,22 +37,27 @@ class Signup extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, loginError } = this.state;
     return (
-      <>
+      <section className="login-container">
+      <div className="login-form valign-wrapper">
         <form onSubmit={this.handleFormSubmit}>
-          <label htmlFor='username'>Username:</label>
-          <input id='username' type='text' name='username' value={username} onChange={this.handleChange}/>
-          <label htmlFor='password'>Password:</label>
-          <input id='password' type='password' name='password' value={password} onChange={this.handleChange} />
-          <input type='submit' value='Signup' />
+        <div className="input-field col s6">
+          <input value={username} name='username' id="username" type="text" className="validate" onChange={this.handleChange}/>
+          <label htmlFor="username">Username</label>
+        </div>
+        <div className="input-field col s6">
+          <input value={password} name='password' id="password" type="text" className="validate" onChange={this.handleChange}/>
+          <label htmlFor="password">Password</label>
+        </div>
+          <input className='btn waves-effect waves-light"' type='submit' value='Signup' />
         </form>
-
-        <p>Already have account? 
+        {loginError ? <p className="login-p ">Error signin up, try again later.</p> : null}
+        <p className="login-p" >Already have account?</p>
           <Link to={'/login'}> Login</Link>
-        </p>
 
-      </>
+      </div>
+      </section>
     )
   }
 }

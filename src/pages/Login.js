@@ -6,17 +6,22 @@ class Login extends Component {
   state = {
     username: '',
     password: '',
+    loginError: false
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault();
     const { username, password } = this.state
-
     this.props.login({ username, password })
     .then( (user) => {
       console.log(user)
     })
-    .catch( error => console.log(error) )
+    .catch( error => {
+      console.log(error)
+      this.setState({
+        loginError: true
+      })
+  } )
   }
 
   handleChange = (event) => {  
@@ -25,21 +30,39 @@ class Login extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, password, loginError } = this.state;
     return (
-      <>
-        <form onSubmit={this.handleFormSubmit}>
-          <label htmlFor='username' >Username:</label>
-          <input id='username' type='text' name='username' value={username} onChange={this.handleChange}/>
-          <label htmlFor='password'>Password:</label>
-          <input id='password' type='password' name='password' value={password} onChange={this.handleChange} />
-          <input type='submit' value='Login' />
-        </form>
+      <div className="login-container">
+        <div className="moon">
+	<div className="moon-shadow"></div>
+</div>
 
-        <p>You don't have an accout yet?
+<div className="star"></div>
+<div className="star"></div>
+<div className="star"></div>
+<div className="star"></div>
+<div className="star"></div>
+      <div className="login-form valign-wrapper">
+<h2 className="white-text" >dreamhub</h2>
+        <form className="col s12" onSubmit={this.handleFormSubmit}>
+        <div className="input-field col s6">
+          <input value={username} name='username' id="username" type="text" className="validate" onChange={this.handleChange}/>
+          <label htmlFor="username">Username</label>
+        </div>
+        <div className="input-field col s6">
+          <input value={password} name='password' id="password" type="text" className="validate" onChange={this.handleChange}/>
+          <label htmlFor="password">Password</label>
+        </div>
+        <center>
+          <input className='deep-purple accent-3 btn waves-effect waves-light' type='submit' value='Login' />
+          </center>
+        </form>
+        {loginError ? <p className="login-p ">Username or password don't match our records.</p> : null}
+        <p className="login-p">Don't have an accout yet?</p>
             <Link to={'/signup'}> Signup</Link>
-        </p>
-      </>
+        
+      </div>
+      </div>
     )
   }
 }
