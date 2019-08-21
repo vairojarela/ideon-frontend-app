@@ -44,7 +44,7 @@ export default class Home extends Component {
       <>
       <Navbar/>
       <section className="home container">  
-      {posts.length > 0 ? posts.map((post) => {
+      {posts.length ? posts.map((post) => {
         return(
         <div className="card" key={post._id}>
           <div className="card-image waves-effect waves-block waves-light">
