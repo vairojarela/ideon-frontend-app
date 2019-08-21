@@ -4,7 +4,7 @@ class UserService {
 
   constructor() {
     this.userData = axios.create({
-      baseURL: 'http://localhost:4000',
+      baseURL: process.env.BACKEND_DOMAIN,
       withCredentials: true,
     })
   }
