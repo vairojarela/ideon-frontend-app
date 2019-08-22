@@ -26,10 +26,10 @@ export default class Home extends Component {
       .catch((error) => {
         console.log(error);
       })
-
-    postsService.getAllPosts()
+    
+      setInterval(()=>{
+        postsService.getAllPosts()
     .then(response => {
-      console.log(response)
       if (!response.listOfPosts){
         response.listOfPosts = []
       }
@@ -37,6 +37,8 @@ export default class Home extends Component {
         posts: response.listOfPosts 
       })
     })
+      }, 1000)
+    
 
   
   }
@@ -72,8 +74,8 @@ export default class Home extends Component {
   }
 
   render() {
-/*     const {posts} = this.state */
-    const posts = ['1','2','3']
+    const {posts} = this.state 
+
     return (
       <>
       <Navbar/>
@@ -93,7 +95,7 @@ export default class Home extends Component {
           <div className="card-content">
           
             <span className="card-title activator grey-text text-darken-4">{post.title}<i className="material-icons right">more_vert</i></span>
-            <span data-badge-caption={post.dreamType} className="new badge"></span> 
+            <span data-badge-caption={post.dreamType} className="new badge deep-purple accent-3"></span> 
             <p>by <a href="#">{post.authorName}</a> {moment(post.created_at).fromNow()}</p>
           </div>
           <div className="card-reveal">

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import {Redirect} from 'react-router-dom';
 import withAuth from '../../components/withAuth';
 import profileService from '../../services/profile-service';

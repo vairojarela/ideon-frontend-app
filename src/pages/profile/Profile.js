@@ -3,25 +3,22 @@ import { Link } from 'react-router-dom';
 import withAuth from '../../components/withAuth';
 import Navbar from '../../components/Navbar';
 import AuthService from '../../services/auth-service'
-import M from "materialize-css";
-import moment from 'moment'
 import Footer from '../../components/Footer';
 import postsService from '../../services/posts-service';
-import { thisExpression } from '@babel/types';
 
 class Profile extends Component {
 
   state={
-    user: '',
+		user: '',
+		description: '',
     posts: null
   }
 
   componentWillMount() {
-    AuthService.me(this.props._id)
+
+			AuthService.me(this.props._id)
       .then((response)=> {
-        const userFromAPI = response
-				console.log(userFromAPI)
-				
+        const userFromAPI = response			
         this.setState({
           user: userFromAPI,
         })
@@ -29,31 +26,11 @@ class Profile extends Component {
       .catch((error) => {
         console.log(error);
       })
+	 
     
 		}
 		
-		componentDidMount(){
-      postsService.getAllPostsFromUser(this.props.user._id)
-      .then((response)=> {
-        const postsFromUserFromAPI = response
-				console.log(postsFromUserFromAPI)
-				this.setState({
-          posts: postsFromUserFromAPI,
-				})
-				const newArr = []
-				postsFromUserFromAPI.forE((post)=>{
-				if (post.authorName === this.state.username) {
-					newArr.push(post)
-				}
-			})
-			this.setState({
-				newArr
-			})
-      })
-      .catch((error) => {
-        console.log(error);
-			})
-		}
+		
 
   render() {
     return (
@@ -95,7 +72,7 @@ class Profile extends Component {
 
 		<div class="profile-bio">
 
-			<p><span class="profile-real-name">{this.state.user.name}</span> {this.state.user.description} 📷✈️🏕️</p>
+			<p><span class="profile-real-name">{this.state.user.name}</span>{this.state.user.description === '' ? <code>No descrption yet</code> : <p>{this.state.user.description}</p>}</p>
 
 		</div>
 
@@ -106,12 +83,10 @@ class Profile extends Component {
 </header>
 
 <main>
-
-{ console.log(this.state.newArr)}
 	<div className="container">
 
 		<div className="gallery">
-
+			}
 			<div className="gallery-item" tabindex="0">
 
 				<img src="https://images.unsplash.com/photo-1511765224389-37f0e77cf0eb?w=500&h=500&fit=crop" className="gallery-image" alt=""/>

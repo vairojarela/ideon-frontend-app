@@ -15,7 +15,6 @@ class PostsService {
   }
 
   getAllPostsFromUser(id) {
-    console.log(id)
      return this.auth.get(`/posts/${id}`)
        .then(({ data }) => data);
    }

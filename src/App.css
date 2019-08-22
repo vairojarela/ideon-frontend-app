@@ -38,8 +38,6 @@ nav{
 .home{
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
  
 }
 
@@ -71,7 +69,7 @@ nav{
 }
 
 .nav-bottom{
-  position: sticky;
+  position: sticky !important;
   display: flex;
   justify-content: space-between;
   bottom: 0;
@@ -154,6 +152,8 @@ nav{
 .type-item{
   display: flex;
   flex-flow: column;
+  text-align: center;
+  width: 100%
 }
 
 /*moon */
@@ -273,6 +273,12 @@ img {
   justify-content: center;
   align-items: center;
   margin-right: 3rem;
+}
+.navi-title{
+  margin: 2%;
+}
+.collection li{
+  padding: 1%;
 }
 
 .profile-image img {
@@ -446,7 +452,7 @@ img {
   }
 
   .profile-user-name {
-      font-size: 2.2rem;
+    font-size: 1.5rem;
   }
 
   .profile-edit-btn {

@@ -80,7 +80,7 @@ class CreatePosts extends Component {
         <div className="row">
           <div className="input-field col s12">
             <input required value={title} name='title' onChange={this.handleOnChange} id="title" type="text" className="validate"/>
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">An interesting title</label>
           </div>
         </div>
         <div className="row">
@@ -92,7 +92,7 @@ class CreatePosts extends Component {
       <div className="row">
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="create-icons material-icons">add</i>
+        <i className="create-icons material-icons">wb_sunny</i>
               <label>
               <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value="Daydream"/>
               <span>Daydream</span>
@@ -101,78 +101,86 @@ class CreatePosts extends Component {
         </div>
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="create-icons material-icons">add</i>
+            <i className="create-icons material-icons">remove_red_eye</i>
               <label>
               <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Lucid'/>
               <span>Lucid</span>
             </label>
+
             </div>
             </div>
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="create-icons material-icons">mood_bad</i>
+            <i className="create-icons material-icons">mood_bad</i>
               <label>
               <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Nightmare'/>
               <span>Nightmare</span>
             </label>
+
             </div>
             </div>
         <div className="input-field col s12 types">  
         <div className="type-item">
-              <i className="create-icons material-icons">add</i>
+            <i className="create-icons material-icons">loop</i>
               <label>
               <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Recurring'/>
               <span>Recurring</span>
             </label>
+            
             </div>
             </div>
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="create-icons material-icons">add</i>
+            <i className="create-icons material-icons">healing</i>
               <label>
               <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Healing'/>
               <span>Healing</span>
             </label>
+
             </div>
             </div>
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="create-icons material-icons">add</i>
+            <i className="create-icons material-icons">record_voice_over</i>
               <label>
               <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Prophetic'/>
               <span>Prophetic</span>
             </label>
+
             </div>
             </div>
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="create-icons material-icons">add</i>
+            <i className="create-icons material-icons">warning</i>
               <label>
               <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Signal'/>
               <span>Signal</span>
             </label>
+
             </div>
             </div>
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="create-icons material-icons">add</i>
+            <i className="create-icons material-icons">directions_bike</i>
               <label>
               <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Epic'/>
               <span>Epic</span>
             </label>
+
             </div>
             </div>
         <div className="input-field col s12 types">
         <div className="type-item">
-              <i className="create-icons material-icons">add</i>
+            <i className="create-icons material-icons">bubble_chart</i>
               <label>
               <input onChange={this.handleOnCheck} type="checkbox" className="filled-in" value='Other'/>
               <span>Other</span>
             </label>
+
             </div>
             </div>
         </div>        
-  <button className="btn waves-effect waves-light" type="submit" name="action">Submit
+  <button className="btn waves-effect waves-light deep-purple accent-3" type="submit" name="action">Submit
     <i className="material-icons right">send</i>
 </button>
       </form>

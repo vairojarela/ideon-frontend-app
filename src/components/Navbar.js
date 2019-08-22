@@ -18,7 +18,7 @@ class Navbar extends Component {
           <nav className="nav-mobile">
              <img data-target="slide-out" className="sidenav-trigger circle small-img" src={this.props.user.image} alt={this.props.user.username}></img>
             <div className="nav-wrapper">
-              <h5 className="right">dreamhub</h5>
+              <h5 className="right navi-title">dreamhub</h5>
     </div>
           </nav>
           <ul id="slide-out" className="sidenav">
