@@ -46,12 +46,12 @@ class Login extends Component {
 <h2 className="white-text" >dreamhub</h2>
         <form className="col s12" onSubmit={this.handleFormSubmit}>
         <div className="input-field col s6">
-          <input value={username} name='username' id="username" type="text" className="validate" onChange={this.handleChange}/>
-          <label htmlFor="username">Username</label>
+          <input required value={username} name='username' id="username" type="email" className="white-text validate" onChange={this.handleChange}/>
+          <label htmlFor="username">email</label>
         </div>
         <div className="input-field col s6">
-          <input value={password} name='password' id="password" type="text" className="validate" onChange={this.handleChange}/>
-          <label htmlFor="password">Password</label>
+          <input required value={password} name='password' id="password" type="password" className="white-text validate" onChange={this.handleChange}/>
+          <label htmlFor="password">password</label>
         </div>
         <center>
           <input className='deep-purple accent-3 btn waves-effect waves-light' type='submit' value='Login' />

@@ -42,7 +42,7 @@ class AuthProvider extends Component {
   }
 
   componentDidMount() {
-    authService.me()
+    authService.me()                    
     .then(user => {
       this.setState({
         user,

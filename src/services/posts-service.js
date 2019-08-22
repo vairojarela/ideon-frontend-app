@@ -3,7 +3,7 @@ import axios from 'axios';
 class PostsService {
   constructor() {
     this.auth = axios.create({
-      baseURL: 'http://localhost:4000',
+      baseURL: process.env.REACT_APP_BACKEND_DOMAIN,
       withCredentials: true,
     })
   }
@@ -31,9 +31,6 @@ class PostsService {
     return this.auth.delete(`/posts/${id}/delete`)
     .then(response => response)
   }
-
-  
-
 }
 
 const postsService = new PostsService()

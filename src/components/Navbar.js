@@ -7,7 +7,7 @@ class Navbar extends Component {
   
   componentDidMount(){
       var elems = document.querySelector('.sidenav');
-      var instances = M.Sidenav.init(elems);
+      M.Sidenav.init(elems);
       
   }
   render() {  
@@ -18,6 +18,7 @@ class Navbar extends Component {
           <nav className="nav-mobile">
              <img data-target="slide-out" className="sidenav-trigger circle small-img" src={this.props.user.image} alt={this.props.user.username}></img>
             <div className="nav-wrapper">
+              <h5 className="right">dreamhub</h5>
     </div>
           </nav>
           <ul id="slide-out" className="sidenav">
@@ -25,7 +26,7 @@ class Navbar extends Component {
               <div className="user-view">
                 <div className="background">
                 </div>
-            <a href="#user"><img className="circle" src={this.props.user.image}/></a>
+            <a href="#user"><img className="circle" src={this.props.user.image} alt={this.props.user.username}/></a>
             <a href="#name"><span className="white-text name">{this.props.user.name}</span></a>
             <a href="#email"><span className="white-text email">{this.props.user.username}</span></a>
     </div></li>

@@ -5,28 +5,42 @@ import Loader from '../components/Loader';
 import moment from 'moment'
 import postsService from '../services/posts-service';
 import withAuth from '../components/withAuth';
+import AuthService from '../services/auth-service'
 
 
 export default class Home extends Component {
 
   state = {
+    user: '',
     posts: [],
   }
   
-  
   componentDidMount(){
+    AuthService.me(this.props._id)  
+      .then((response)=> {
+        const userFromAPI = response
+        this.setState({
+          user: userFromAPI,
+        })
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+
     postsService.getAllPosts()
     .then(response => {
       console.log(response)
+      if (!response.listOfPosts){
+        response.listOfPosts = []
+      }
       this.setState({
         posts: response.listOfPosts 
       })
     })
-  }
-
- 
 
   
+  }
+
   handleDeleteClick = (id) => {
     postsService.deleteOnePost(id)
     .then(() => {
@@ -58,9 +72,8 @@ export default class Home extends Component {
   }
 
   render() {
-    const {posts} = this.state
-    console.log(this.state)
-
+/*     const {posts} = this.state */
+    const posts = ['1','2','3']
     return (
       <>
       <Navbar/>
@@ -72,19 +85,20 @@ export default class Home extends Component {
           <i className="material-icons">close</i>
         </div>
       </form>
-      {posts.length > 0 ? posts.map((post) => {
+      {Array.isArray(posts) && posts.length > 0 ? posts.reverse().map((post) => {
         return(
         <div className="card" key={post._id}>
           <div className="card-image waves-effect waves-block waves-light">
           </div>
           <div className="card-content">
           
-            <span className="card-title activator grey-text text-darken-4"><span className="badges">{post.votes}</span>{post.title}<i className="material-icons right">more_vert</i></span>
-            <span data-badge-caption={post.dreamType} class="new badge"></span> 
-            <p>Posted by <a href="#">{post.authorName}</a> {moment(post.created_at).fromNow()}</p>
+            <span className="card-title activator grey-text text-darken-4">{post.title}<i className="material-icons right">more_vert</i></span>
+            <span data-badge-caption={post.dreamType} className="new badge"></span> 
+            <p>by <a href="#">{post.authorName}</a> {moment(post.created_at).fromNow()}</p>
           </div>
           <div className="card-reveal">
             <span className="card-title grey-text text-darken-4">{post.title}<i className="material-icons right">close</i></span>
+            <span className="badges right">{post.votes}</span>  
             <small>{moment(post.created_at).fromNow()}</small>
             <p>{post.description}</p>
           </div>

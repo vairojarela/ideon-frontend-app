@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import withAuth from '../components/withAuth.js';
 
 class Loader extends Component {
   render() {

@@ -1,6 +1,4 @@
 import React, { Component } from 'react'
-import Footer from '../../components/Footer';
-import moment from 'moment'
 import postsService from '../../services/posts-service';
 import withAuth from '../../components/withAuth';
 import {Redirect} from 'react-router-dom';
@@ -75,7 +73,7 @@ class CreatePosts extends Component {
     return (
       <>
       <div className="container">
-      <a className="waves-effect waves-teal btn-flat" onClick={this.goBack}>Back</a>
+      <a className="waves-effect waves-teal btn-flat back" onClick={this.goBack}><i className="material-icons">arrow_back</i></a>
       <div className="row">
       <h4>Talk about your dream</h4>
       <form onSubmit={this.handleOnSubmit} className="col s12">

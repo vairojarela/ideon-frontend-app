@@ -12,19 +12,17 @@ import Profile from './pages/profile/Profile';
 import ProfileEdit from './pages/profile/ProfileEdit';
 import Messages from './pages/messages/Messages';
 
-
-
 import AuthProvider from './contexts/auth-context.js';
 
 import './App.css';
 
-
 class App extends Component {
+  
   render() {
     return (
       <Router>
         <AuthProvider>
-          <div>
+          <>
             <Switch>
               <AnonRoute path="/login" component={Login} />
               <AnonRoute path="/signup" component={Signup} />
@@ -35,7 +33,7 @@ class App extends Component {
               <PrivateRoute path="/messages" component={Messages} />
               <PrivateRoute path="/" component={Home}/>
             </Switch>   
-          </div>
+          </>
         </AuthProvider>
       </Router>
     )

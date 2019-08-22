@@ -27,7 +27,9 @@ class Footer extends Component {
             </Link>
             </div>
             <div>
-            <Link to='/messages'>Settings</Link>
+            <Link to='/messages'>
+            <i className="material-icons">favorite</i>
+            </Link>
             </div>
           </nav>
     )

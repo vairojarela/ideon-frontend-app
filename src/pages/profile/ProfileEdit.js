@@ -2,10 +2,8 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {Redirect} from 'react-router-dom';
 import withAuth from '../../components/withAuth';
-import authService from '../../services/auth-service';
 import profileService from '../../services/profile-service';
 import InputText from '../../components/forms/InputText';
-import M from "materialize-css";
 
 
 class Profile extends Component {
@@ -71,8 +69,8 @@ class Profile extends Component {
     const {username, name, description, image, interests, date, redirect} = this.state
     return (
       <>
-      <div>
-        <button className='waves-effect waves-teal btn-flat' onClick={this.goBack}>Back</button>
+      <div className="container">
+        <a className="waves-effect waves-teal btn-flat back" onClick={this.goBack}><i className="material-icons">arrow_back</i></a>
         <div className="container">
         <h3>Edit Profile</h3>
         <form onSubmit={this.handleOnSubmit}>
@@ -95,11 +93,13 @@ class Profile extends Component {
 </button>
         </form>
         <form onSubmit={this.handleOnDelete}>
-          <button className='uk-button uk-button-danger' type='submit'>Delete</button> 
+          <button className='btn waves-effect waves-light red accent-3' type='submit'>Delete
+          <i className="material-icons right">cancel</i>
+          </button> 
         </form>
         </div>
         {redirect ? <Redirect edited={true} to={this.state.path} props={this.props}/> : null}
-      </div>
+        </div>
       </>
     )
   }

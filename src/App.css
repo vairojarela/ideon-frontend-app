@@ -9,14 +9,17 @@ html{
   margin: 0;
   padding: 0;
   height: 100%;
+  overflow: hidden;
+  overflow: scroll;
+  overflow-x: hidden;
 }
+
 
 body {
   font-family: 'Raleway', sans-serif;
-  min-height: 100vh;
+  min-height: 99.8vh;
   background-color: #fafafa;
   color: #262626;
-  padding-bottom: 3rem;
   font-size: 10px;
 }
 
@@ -37,7 +40,11 @@ nav{
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  height: auto;
+ 
+}
+
+.messages{
+  height: 99.8vh;
 }
 
 .create-posts{
@@ -63,15 +70,20 @@ nav{
   z-index: 10;
 }
 
-.nav-mobile{
+.nav-bottom{
+  position: sticky;
   display: flex;
+  justify-content: space-between;
+  bottom: 0;
+  height: 100%;
+}
+.nav-mobile{
   justify-content: space-between;
   align-items: center;
   padding: 1%;
 }
 
 .nav-bottom{
-  display: flex;
   padding: 1%;
   font-size: 1rem;
 }
@@ -80,14 +92,13 @@ nav{
   text-align: center;
 }
 
-
-.nav-bottom{
-  display: flex;
-  justify-content: space-between;
-/*   position: fixed; */
-  bottom: 0;
-  height: 70px;
+.edit{
+  width: 180px;
 }
+.edit a {
+  color: white
+}
+
 .nav-bottom div{
   width: 20%;
   text-align: center;
@@ -190,7 +201,7 @@ nav{
 	border-radius: 50%;
 }
 
-@media(max-width: 760px){
+@media(max-width: 620px){
 
   .moon{
     top: 15%;
@@ -220,11 +231,6 @@ img {
   display: block;
 }
 
-/* .container {
-  max-width: 93.5rem;
-  margin: 0 auto;
-  padding: 0 2rem;
-} */
 
 .btn-p {
   display: inline-block;
@@ -516,6 +522,7 @@ Remove or comment-out the code block below to see how the browser will fall-back
 
   .profile-image {
       grid-row: 1 / -1;
+      
   }
 
   .gallery {
@@ -564,4 +571,19 @@ Remove or comment-out the code block below to see how the browser will fall-back
           margin: 0;
       }
   }
+}
+
+#profile-avatar{
+  max-width: 175px;
+}
+
+.back{
+  padding: 2% 0;
+}
+.log50{
+  width: 50%;
+}
+
+.card{
+  height: 150px;
 }

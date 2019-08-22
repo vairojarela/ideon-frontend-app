@@ -14,11 +14,9 @@ class Signup extends Component {
     event.preventDefault();
     const username = this.state.username;
     const password = this.state.password;
-
     this.props.signup({ username, password })
       .then( (user) => {
-        console.log(user)
-        this.setState({
+         this.setState({
             username: '',
             password: '',
         });
@@ -29,6 +27,8 @@ class Signup extends Component {
           loginError: true
         })
       } )
+
+      
   }
 
   handleChange = (event) => {  
@@ -40,10 +40,11 @@ class Signup extends Component {
     const { username, password, loginError } = this.state;
     return (
       <div className="login-container">
+        <div className="log50">
       <div className="moon">
 <div className="moon-shadow"></div>
 </div>
-
+</div>
 <div className="star"></div>
 <div className="star"></div>
 <div className="star"></div>
@@ -53,12 +54,12 @@ class Signup extends Component {
 <h2 className="white-text" >dreamhub</h2>
         <form className="col s12" onSubmit={this.handleFormSubmit}>
         <div className="input-field col s6">
-          <input value={username} name='username' id="username" type="text" className="validate" onChange={this.handleChange}/>
-          <label htmlFor="username">Username</label>
+          <input required value={username} name='username' id="username" type="email" className="white-text validate" onChange={this.handleChange}/>
+          <label htmlFor="username">email</label>
         </div>
         <div className="input-field col s6">
-          <input value={password} name='password' id="password" type="text" className="validate" onChange={this.handleChange}/>
-          <label htmlFor="password">Password</label>
+          <input required value={password} name='password' id="password" type="password" className="white-text validate" onChange={this.handleChange}/>
+          <label htmlFor="password">password</label>
         </div>
         <center>
           <input className='deep-purple accent-3 btn waves-effect waves-light" ' type='submit' value='Signup' />
